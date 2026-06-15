@@ -1,0 +1,12 @@
+<!--builder
+type=team
+name=team-v4
+-->
+<div class="team-v4-slider" style="text-align:center; font-family:sans-serif; padding:20px; background:#fff;">
+  <div id="membroV4" style="font-size:18px; font-weight:bold; color:#333;">👤 Nhân sự: Đinh Tín - Kỹ Sư Trưởng</div>
+  <button onclick="nextMembroV4()" style="margin-top:15px; padding:5px 15px; cursor:pointer;">Thành viên tiếp theo ➔</button>
+</div>
+<script>
+  let idxV4 = 0; const listV4 = ["👤 Nhân sự: Đinh Tín - Kỹ Sư Trưởng", "👤 Nhân sự: Nguyễn Văn A - Lập trình viên Rust", "👤 Nhân sự: Trần Thị B - Chuyên viên Thiết kế"];
+  function nextMembroV4(){ idxV4=(idxV4+1)%listV4.length; document.getElementById('membroV4').innerText=listV4[idxV4]; }
+</script>

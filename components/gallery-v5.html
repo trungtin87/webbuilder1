@@ -1,0 +1,21 @@
+
+<!--builder
+type=gallery
+name=gallery-v5
+-->
+<section class="gallery-v5">
+  <div class="gallery-v5-box" onclick="moLightboxV5('🔍 Ảnh Dự Án Lớn Đã Phóng To')">Click Xem Ảnh</div>
+  <div id="lightboxV5" class="gallery-v5-lightbox" onclick="dongLightboxV5()">
+    <div id="lightboxTxtV5" class="lightbox-content"></div>
+  </div>
+</section>
+<style>
+  .gallery-v5 { width:100%; padding:40px 20px; text-align:center; font-family:sans-serif; }
+  .gallery-v5-box { display:inline-block; padding:40px; background:#007bff; color:#fff; font-weight:bold; border-radius:8px; cursor:pointer; }
+  .gallery-v5-lightbox { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:10000; justify-content:center; align-items:center; }
+  .lightbox-content { color:#fff; font-size:24px; font-weight:bold; background:#222; padding:40px; border-radius:8px; }
+</style>
+<script>
+  function moLightboxV5(txt) { document.getElementById('lightboxV5').style.display='flex'; document.getElementById('lightboxTxtV5').innerText=txt; }
+  function dongLightboxV5() { document.getElementById('lightboxV5').style.display='none'; }
+</script>

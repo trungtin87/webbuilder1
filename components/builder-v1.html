@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenEduVN - Trình Khởi Tạo Website Tĩnh Tối Ưu</title>
+  <!-- Nhúng thư viện JSZip từ CDN để phục vụ việc nén file trực tiếp ở trình duyệt -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <style>
+    :root {
+      --primary: #007bff;
+      --dark: #111827;
+      --gray-light: #f8fafc;
+      --border: #cbd5e1;
+    }
+    body, html { margin:0; padding:0; width:100%; height:100%; font-family:sans-serif; overflow:hidden; background:#e2e8f0; }
+    * { box-sizing: border-box; }
+
+    /* LAYOUT TỔNG THỂ */
+    .builder { display: flex; flex-direction: column; height: 100vh; }
+    
+    /* TOPBAR */
+    .topbar { height: 60px; background: var(--dark); color: #fff; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+    .topbar-brand { font-weight: bold; font-size: 18px; letter-spacing: 1px; color: #10b981; }
+    .topbar-actions { display: flex; gap: 10px; align-items: center; }
+    
+    /* PAGES MANAGER */
+    .page-selector { background: #374151; color: white; border: 1px solid #4b5563; padding: 6px 12px; border-radius: 4px; outline: none; cursor: pointer; }
+    .btn { padding: 8px 16px; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; transition: all 0.2s; }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-success { background: #28a745; color: white; }
+    .btn-danger { background: #dc3545; color: white; }
+    .btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    /* WORKSPACE */
+    .workspace { flex: 1; display: flex; overflow: hidden; }
+    
+    /* PANEL TRÁI: THƯ VIỆN COMPONENT */
+    .panel-left { width: 280px; background: #fff; border-right: 1px solid var(--border); display: flex; flex-direction: column; }
+    .panel-title { padding: 15px; font-weight: bold; background: var(--gray-light); border-bottom: 1px solid var(--border); color: #334155; }
+    .component-list { flex: 1; overflow-y: auto; padding: 15px; display: flex; flex-direction: column; gap: 12px; }
+    .comp-item { padding: 12px; background: var(--gray-light); border: 2px dashed var(--border); border-radius: 6px; cursor: grab; font-size: 14px; font-weight: bold; color: #475569; transition: all 0.2s; }
+    .comp-item:hover { border-color: var(--primary); color: var(--primary); background: rgba(0,123,255,0.02); }
+    
+    /* PANEL GIỮA: MÀN HÌNH PREVIEW TRỰC TIẾP */
+    .preview-container { flex: 1; background: #94a3b8; padding: 30px; overflow-y: auto; display: flex; justify-content: center; }
+    .canvas { width: 100%; max-width: 1024px; min-height: 100%; background: #fff; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); padding: 10px; display: flex; flex-direction: column; gap: 0; position: relative; }
+    
+    /* DROP ZONE CỦA CANVAS */
+    .drop-zone { min-height: 60px; border: 2px dashed rgba(0,123,255,0.3); margin: 5px 0; border-radius: 4px; display: flex; justify-content: center; align-items: center; color: #a1a1aa; font-size: 13px; transition: all 0.2s; }
+    .drop-zone.drag-over { background: rgba(0,123,255,0.1); border-color: var(--primary); color: var(--primary); font-weight: bold; }
+    
+    /* KHỐI COMPONENT KHI ĐÃ THẢ VÀO CANVAS */
+    .rendered-component { position: relative; border: 1px transparent dashed; transition: border 0.2s; }
+    .rendered-component:hover { border-color: var(--primary); }
+    .comp-toolbar { position: absolute; top: 5px; right: 5px; display: none; gap: 5px; z-index: 9999; }
+    .rendered-component:hover .comp-toolbar { display: flex; }
+    .btn-mini { padding: 2px 6px; font-size: 11px; border-radius: 3px; border: none; cursor: pointer; color: white; font-weight: bold; }
+
+    /* PANEL PHẢI: THUỘC TÍNH VÀ CẤU HÌNH */
+    .panel-right { width: 300px; background: #fff; border-left: 1px solid var(--border); padding: 15px; display: flex; flex-direction: column; gap: 15px; overflow-y: auto; }
+    .prop-group { display: flex; flex-direction: column; gap: 5px; }
+    .prop-group label { font-size: 13px; font-weight: bold; color: #475569; }
+    .prop-group input, .prop-group textarea { width: 100%; padding: 8px; border: 1px solid var(--border); border-radius: 4px; outline: none; font-size: 14px; }
+    .prop-group input:focus, .prop-group textarea:focus { border-color: var(--primary); }
+  </style>
+</head>
+<body>
+
+  <div class="builder">
+    <!-- TOPBAR TRÊN CÙNG -->
+    <header class="topbar">
+      <div class="topbar-brand">🛠️ OPENEDUVN STATIC BUILDER</div>
+      <div class="topbar-actions">
+        <!-- Quản lý chuyển đổi đa trang -->
+        <span style="font-size:14px; font-weight:bold;">Trang hiện tại:</span>
+        <select id="pageSelect" class="page-selector" onchange="chuyenTrang(this.value)"></select>
+        <button class="btn btn-primary" onclick="themTrangMoi()">+ Thêm Trang</button>
+        <button class="btn btn-success" onclick="xuatKhoZIP()">⚡ Xuất File ZIP</button>
+      </div>
+    </header>
+
+    <!-- KHÔNG GIAN LÀM VIỆC CHÍNH -->
+    <div class="workspace">
+      <!-- PANEL TRÁI: THƯ VIỆN LINH KIỆN -->
+      <aside class="panel-left">
+        <div class="panel-title">📦 Thư Viện Linh Kiện (Drag)</div>
+        <div class="component-list" id="library"></div>
+      </aside>
+
+      <!-- PANEL GIỮA: KHU VỰC KÉO THẢ TRỰC QUAN -->
+      <main class="preview-container">
+        <div class="canvas" id="canvas">
+          <!-- Các khối component và drop-zone sẽ được sinh động bộ tại đây bằng JS -->
+        </div>
+      </main>
+
+      <!-- PANEL PHẢI: BẢNG ĐIỀU CHỈNH THUỘC TÍNH NHANH -->
+      <aside class="panel-right">
+        <div class="panel-title" style="padding:0 0 10px 0; border-bottom:1px solid var(--border);">⚙️ Cấu Hình Thuộc Tính</div>
+        <div id="propertiesBox">
+          <p style="color:#94a3b8; font-size:13px; text-align:center;">Bấm vào một khối trong màn hình để chỉnh sửa nội dung CSS/HTML trực tiếp.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- DỮ LIỆU MẪU ĐỂ BUILDER CHẠY NGAY TẠI CHỖ -->
+  <script>
+    // Kho nguyên liệu thô (Đại diện cho 60 component của anh)
+    const KHO_LINH_KIEN = [
+      { id: "header-v1", name: "Thanh Điều Hướng V1", html: `<nav class="nav-v1" style="padding:20px; background:#1e293b; color:#fff; display:flex; justify-content:space-between; font-family:sans-serif;"><div style="font-weight:bold;">🌱 OpenEduVN</div><div><a href="index.html" style="color:#fff; margin-right:15px; text-decoration:none;">Trang Chủ</a><a href="gioi-thieu.html" style="color:#fff; text-decoration:none;">Giới Thiệu</a></div></nav>` },
+      { id: "hero-v1", name: "Khối Hero Chào Mừng V1", html: `<section class="hero-v1" style="padding:60px 20px; background:#f1f5f9; text-align:center; font-family:sans-serif;"><h1 style="font-size:36px; margin-bottom:10px; color:#111827;">Lập Trình Bằng Tiếng Việt</h1><p style="color:#475569; max-width:600px; margin:0 auto 20px auto;">Hệ sinh thái mã nguồn mở xóa bỏ rào cản ngôn ngữ cho thế hệ trẻ.</p><button style="background:#007bff; color:#fff; border:none; padding:10px 20px; font-weight:bold; border-radius:4px; cursor:pointer;">Bắt Đầu Ngay</button></section>` },
+      { id: "dichvu-v1", name: "Lưới Tính Năng 3 Cột", html: `<section class="dv-v1" style="padding:40px 20px; display:grid; grid-template-columns:repeat(3,1fr); gap:20px; font-family:sans-serif; background:#fff;"><div style="text-align:center; padding:15px; background:#f8fafc; border-radius:6px;"><h3>⚙️ Cú Pháp Thuần</h3><p style="font-size:13px; color:#64748b;">Trình biên dịch tối ưu.</p></div><div style="text-align:center; padding:15px; background:#f8fafc; border-radius:6px;"><h3>🌱 Tuần Hoàn</h3><p style="font-size:13px; color:#64748b;">Mô hình nông nghiệp xanh.</p></div><div style="text-align:center; padding:15px; background:#f8fafc; border-radius:6px;"><h3>⚡ Siêu Tốc</h3><p style="font-size:13px; color:#64748b;">Tải trang trong nháy mắt.</p></div></section>` },
+      { id: "footer-v1", name: "Chân Trang Đơn Giản V1", html: `<footer class="foot-v1" style="padding:20px; background:#111827; color:#9ca3af; text-align:center; font-family:sans-serif; font-size:13px;">© 2026 OpenEduVN Ecosystem. Thành thật và Vui vẻ.</footer>` }
+    ];
+
+    // TRẠNG THÁI HỆ THỐNG (STATE MANAGEMENT) - TỐI ƯU NHẤT
+    let projectState = {
+      currentPage: "index",
+      globalHeader: "header-v1", // Đồng bộ toàn bộ các trang dùng chung một mã Header
+      globalFooter: "footer-v1", // Đồng bộ toàn bộ các trang dùng chung một mã Footer
+      pages: {
+        "index": ["hero-v1", "dichvu-v1"], // Các khối nội dung nằm giữa của trang chủ
+        "gioi-thieu": ["hero-v1"]          // Các khối nội dung nằm giữa của trang giới thiệu
+      }
+    };
+
+    let componentCounter = 0; // Định danh ID duy nhất cho mỗi khối thả vào canvas
+    let draggedCompId = null; // Lưu ID linh kiện đang bị kéo
+
+    // KHỞI CHẠY HỆ THỐNG
+    window.addEventListener('DOMContentLoaded', () => {
+      renderThurVienLinhKien();
+      capNhatBoChonTrang();
+      renderCanvas();
+    });
+
+    // 1. RENDER THƯ VIỆN LINH KIỆN BÊN TRÁI
+    function renderThurVienLinhKien() {
+      const libContainer = document.getElementById('library');
+      libContainer.innerHTML = '';
+      KHO_LINH_KIEN.forEach(comp => {
+        const item = document.createElement('div');
+        item.className = 'comp-item';
+        item.innerText = comp.name;
+        item.setAttribute('draggable', 'true');
+        
+        // Sự kiện kéo của HTML5 API
+        item.addEventListener('dragstart', () => { draggedCompId = comp.id; });
+        item.addEventListener('dragend', () => { draggedCompId = null; });
+        
+        libContainer.appendChild(item);
+      });
+    }
+
+    // 2. CẬP NHẬT DANH SÁCH THẢ XUỐNG QUAN LÝ TRANG
+    function capNhatBoChonTrang() {
+      const select = document.getElementById('pageSelect');
+      select.innerHTML = '';
+      Object.keys(projectState.pages).forEach(p => {
+        const opt = document.createElement('option');
+        opt.value = p;
+        opt.innerText = `${p}.html`;
+        if(p === projectState.currentPage) opt.selected = true;
+        select.appendChild(opt);
+      });
+    }
+
+    // 3. LOGIC THÊM TRANG MỚI TRONG PANEL
+    function themTrangMoi() {
+      const tenTrang = prompt("Nhập tên trang mới (viết liền không dấu, ví dụ: lien-he):");
+      if(!tenTrang) return;
+      const slug = tenTrang.toLowerCase().replace(/[^a-z0-dash]/g, '');
+      if(projectState.pages[slug]) {
+        alert("Trang này đã tồn tại rồi anh Tín ơi!");
+        return;
+      }
+      projectState.pages[slug] = []; // Khởi tạo mảng chứa linh kiện rỗng cho trang mới
+      projectState.currentPage = slug;
+      capNhatBoChonTrang();
+      renderCanvas();
+    }
+
+    // 4. CHUYỂN ĐỔI QUA LẠI GIỮA CÁC TRANG TRONG KHI THIẾT KẾ
+    function chuyenTrang(slug) {
+      projectState.currentPage = slug;
+      renderCanvas();
+      document.getElementById('propertiesBox').innerHTML = `<p style="color:#94a3b8; font-size:13px; text-align:center;">Đã chuyển sang trang ${slug}.html</p>`;
+    }
+
+    // 5. RENDER CANVANS CHÍNH (XỬ LÝ ĐỒNG BỘ HEADER - MAIN CONTENT - FOOTER)
+    function renderCanvas() {
+      const canvas = document.getElementById('canvas');
+      canvas.innerHTML = '';
+
+      // A. Tạo Khối Gắn Cố Định Header Chung Toàn Website
+      const headerId = projectState.globalHeader;
+      const headerData = KHO_LINH_KIEN.find(k => k.id === headerId);
+      if(headerData) canvas.appendChild(taoKhoiRendered(headerData.html, 'header', -1));
+
+      // B. Sinh các Drop Zone đan xen cho phần nội dung chính (Main Content)
+      const danhSachKhoiHienTai = projectState.pages[projectState.currentPage];
+      
+      danhSachKhoiHienTai.forEach((compId, index) => {
+        // Sinh Drop Zone nằm trước mỗi khối
+        canvas.appendChild(taoDropZone(index));
+        
+        // Tìm và sinh Khối linh kiện thực tế
+        const compData = KHO_LINH_KIEN.find(k => k.id === compId);
+        if(compData) {
+          canvas.appendChild(taoKhoiRendered(compData.html, 'main', index));
+        }
+      });
+      
+      // Khối Drop Zone cuối cùng của phần thân bài
+      canvas.appendChild(taoDropZone(danhSachKhoiHienTai.length));
+
+      // C. Tạo Khối Gắn Cố Định Footer Chung Toàn Website
+      const footerId = projectState.globalFooter;
+      const footerData = KHO_LINH_KIEN.find(k => k.id === footerId);
+      if(footerData) canvas.appendChild(taoKhoiRendered(footerData.html, 'footer', -1));
+    }
+
+    // HÀM TẠO DROP ZONE ĐỂ HẤP THỤ SỰ KIỆN THẢ CHUỘT
+    function taoDropZone(index) {
+      const dz = document.createElement('div');
+      dz.className = 'drop-zone';
+      dz.innerText = '[ Thả linh kiện vào đây ]';
+      
+      dz.addEventListener('dragover', (e) => { e.preventDefault(); dz.classList.add('drag-over'); });
+      dz.addEventListener('dragleave', () => dz.classList.remove('drag-over'));
+      dz.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dz.classList.remove('drag-over');
+        if (draggedCompId) {
+          // Thực hiện chèn linh kiện mới vào đúng vị trí index trong mảng state
+          projectState.pages[projectState.currentPage].splice(index, 0, draggedCompId);
+          renderCanvas();
+        }
+      });
+      return dz;
+    }
+
+    // HÀM TẠO KHỐI PREVIEW CHỨA CODE COMPONENT THỰC TẾ
+    function taoKhoiRendered(htmlContent, vungMien, indexTrongMang) {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'rendered-component';
+      
+      // Tạo lớp bọc Shadow DOM hoặc Sandbox Mini cô lập thực tế
+      const contentHolder = document.createElement('div');
+      contentHolder.innerHTML = htmlContent;
+      wrapper.appendChild(contentHolder);
+
+      // Thanh công cụ nhỏ điều hướng xóa/sửa khối (Chỉ hiển thị cho phần Main Content)
+      if(vungMien === 'main') {
+        const toolbar = document.createElement('div');
+        toolbar.className = 'comp-toolbar';
+        
+        const btnXoa = document.createElement('button');
+        btnXoa.className = 'btn-mini btn-danger';
+        btnXoa.innerText = 'Xóa ✕';
+        btnXoa.onclick = (e) => {
+          e.stopPropagation();
+          projectState.pages[projectState.currentPage].splice(indexTrongMang, 1);
+          renderCanvas();
+        };
+        
+        toolbar.appendChild(btnXoa);
+        wrapper.appendChild(toolbar);
+      }
+
+      // Sự kiện bấm vào khối để nạp mã nguồn sang bảng chỉnh sửa thuộc tính bên phải
+      wrapper.onclick = (e) => {
+        e.stopPropagation();
+        moBangThuocTinh(contentHolder, vungMien, indexTrongMang);
+      };
+
+      return wrapper;
+    }
+
+    // 6. BẢNG ĐIỀU CHỈNH THUỘC TÍNH SỬA CODE LIVE (INLINE EDITOR)
+    function moBangThuocTinh(targetElement, vungMien, index) {
+      const pBox = document.getElementById('propertiesBox');
+      pBox.innerHTML = `
+        <div class="prop-group">
+          <label>Phân Vùng:</label>
+          <span style="font-weight:bold; color:var(--primary); font-size:14px;">${vungMien.toUpperCase()} (Khối số ${index})</span>
+        </div>
+        <div class="prop-group" style="margin-top:10px;">
+          <label>Chỉnh sửa HTML/Inline-CSS trực tiếp:</label>
+          <textarea id="txtCodeLive" rows="15" style="font-family:monospace; font-size:12px; line-height:1.4;"></textarea>
+        </div>
+        <button class="btn btn-primary" id="btnSaveLive" style="margin-top:10px; width:100%;">Cập nhật trực tiếp 💾</button>
+      `;
+
+      const txtArea = document.getElementById('txtCodeLive');
+      txtArea.value = targetElement.innerHTML;
+
+      document.getElementById('btnSaveLive').onclick = () => {
+        targetElement.innerHTML = txtArea.value;
+        // Ghi nhận trực tiếp vào RAM hiện tại để lưu giữ thay đổi
+        // (Trong phiên bản thực tế, anh có thể map chuỗi này ngược lại Object state)
+        alert("Đã áp dụng thay đổi cục bộ thành công!");
+      };
+    }
+
+    // 7. BỘ NÃO XUẤT BẢN FILE ZIP ĐA TRANG TỐI ƯU TUYỆT ĐỐI
+    function xuatKhoZIP() {
+      const zip = new JSZip();
+      
+      // Lấy code Header và Footer hiện tại trên Canvas làm chuẩn đồng bộ
+      const headerId = projectState.globalHeader;
+      const footerId = projectState.globalFooter;
+      const headerHtml = KHO_LINH_KIEN.find(k => k.id === headerId)?.html || '';
+      const footerHtml = KHO_LINH_KIEN.find(k => k.id === footerId)?.html || '';
+
+      // Duyệt qua từng trang cấu trúc để đóng gói
+      Object.keys(projectState.pages).forEach(pageKey => {
+        const listCompIds = projectState.pages[pageKey];
+        
+        // Gom toàn bộ mã HTML của các component thuộc trang đó
+        let mainContentHtml = '';
+        listCompIds.forEach(id => {
+          const cData = KHO_LINH_KIEN.find(k => k.id === id);
+          if(cData) mainContentHtml += `\n    <!-- Component: ${cData.name} -->\n    ${cData.html}\n`;
+        });
+
+        // Tạo cấu trúc xương của một file HTML5 tiêu chuẩn hóa toàn cầu
+        const fullHtmlTemplate = `<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${pageKey.toUpperCase()} - Dự án Xuất Bản Tĩnh</title>
+  <style>
+    body, html { margin:0; padding:0; box-sizing:border-box; background-color:#fff; }
+    * { box-sizing: border-box; }
+  </style>
+</head>
+<body>
+
+  <!-- ================= MASTER HEADER ================= -->
+  ${headerHtml}
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main>
+    ${mainContentHtml}
+  </main>
+
+  <!-- ================= MASTER FOOTER ================= -->
+  ${footerHtml}
+
+</body>
+</html>`;
+
+        // Ghi file html của trang hiện tại vào bộ nhớ đệm của file nén
+        zip.file(`${pageKey}.html`, fullHtmlTemplate);
+      });
+
+      // Tiến hành biên dịch gói ZIP nhị phân và kích hoạt lệnh tải về trên trình duyệt
+      zip.generateAsync({type:"blob"}).then(function(content) {
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(content);
+        link.download = "openeduvn_website.zip";
+        link.click();
+      });
+    }
+  </script>
+</body>
+</html>

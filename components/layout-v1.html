@@ -1,0 +1,78 @@
+<!--
+type=layout
+name=layout-v1
+-->
+<div class="layout-v1">
+  
+  <header class="layout-v1-header">
+    <div class="layout-v1-inside">[ Vùng Chứa Thanh Điều Hướng (Navigation Component) ]</div>
+  </header>
+
+  <main class="layout-v1-main">
+    <div class="layout-v1-zone">[ Vùng thả component 1: Hero Section ]</div>
+    <div class="layout-v1-zone">[ Vùng thả component 2: Giới thiệu ]</div>
+    <div class="layout-v1-zone">[ Vùng thả component 3: Tính năng ]</div>
+    <div class="layout-v1-zone">[ Vùng thả component 4: Liên hệ ]</div>
+  </main>
+
+  <footer class="layout-v1-footer">
+    <div class="layout-v1-inside">[ Vùng Chứa Chân Trang (Footer Component) ]</div>
+  </footer>
+
+</div>
+
+<style>
+  /* Reset cơ bản cho layout cô lập */
+  .layout-v1 {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif;
+    background-color: #f8fafc;
+    box-sizing: border-box;
+  }
+  .layout-v1 * { box-sizing: border-box; }
+
+  /* Header cố định trên cùng */
+  .layout-v1-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    background: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  
+  /* Khung nội dung tuôn trào */
+  .layout-v1-main {
+    flex: 1;
+    width: 100%;
+  }
+  
+  /* Các khu vực giả lập chứa component bên trong */
+  .layout-v1-inside, .layout-v1-zone {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    background: rgba(0, 123, 255, 0.05);
+    border: 2px dashed #007bff;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #007bff;
+    font-weight: bold;
+    border-radius: 4px;
+  }
+  
+  .layout-v1-footer {
+    width: 100%;
+    background: #1e293b;
+    border-top: 1px solid #334155;
+  }
+  .layout-v1-footer .layout-v1-inside {
+    color: #94a3b8;
+    border-color: #475569;
+    background: rgba(255,255,255,0.05);
+  }
+</style>

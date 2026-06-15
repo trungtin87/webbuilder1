@@ -1,0 +1,60 @@
+<div class="layout-v3">
+  
+  <header class="layout-v3-header">
+    <div class="layout-v3-inside">📄 OpenEduVN Docs Header</div>
+  </header>
+
+  <div class="layout-v3-body">
+    
+    <aside class="layout-v3-sidebar">
+      <div class="layout-v3-menu-box">➔ Giới thiệu cú pháp</div>
+      <div class="layout-v3-menu-box">➔ Cài đặt ANTLR4 & Rust</div>
+      <div class="layout-v3-menu-box">➔ Quản lý bộ nhớ LLVM</div>
+    </aside>
+
+    <main class="layout-v3-main">
+      <div class="layout-v3-doc-zone">[ Tài liệu hướng dẫn chi tiết - Thả component nội dung vào đây ]</div>
+    </main>
+
+  </div>
+
+</div>
+
+<style>
+  .layout-v3 { width: 100%; min-height: 100vh; display: flex; flex-direction: column; font-family: sans-serif; }
+  .layout-v3 * { box-sizing: border-box; }
+  
+  .layout-v3-header { background: #1e293b; color: white; padding: 10px 0; }
+  .layout-v3-inside { max-width: 1400px; margin: 0 auto; padding: 10px 20px; font-weight: bold; }
+  
+  .layout-v3-body {
+    flex: 1;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 280px 1fr; /* Sidebar rộng cố định 280px */
+  }
+  
+  /* Kỹ thuật khóa Sidebar bám theo khi cuộn chuột đọc tài liệu */
+  .layout-v3-sidebar {
+    position: sticky;
+    top: 50px;
+    height: calc(100vh - 50px);
+    background: #f8fafc;
+    border-right: 1px solid #e2e8f0;
+    padding: 20px;
+    overflow-y: auto; /* Tự xuất hiện thanh cuộn nội bộ nếu menu quá dài */
+  }
+  
+  .layout-v3-menu-box { padding: 10px; background: #fff; border: 1px solid #cbd5e1; margin-bottom: 10px; font-size: 14px; color: #475569; font-weight: bold; border-radius: 4px; text-align: left; }
+  
+  .layout-v3-main { padding: 30px; background: #ffffff; }
+  .layout-v3-doc-zone { min-height: 600px; border: 2px dashed #8b5cf6; background: rgba(139, 92, 246, 0.05); color: #8b5cf6; display: flex; justify-content: center; align-items: center; font-weight: bold; border-radius: 8px; }
+
+  /* Trên mobile: Biến Sidebar trái thành menu phía trên nội dung */
+  @media (max-width: 768px) {
+    .layout-v3-body { grid-template-columns: 1fr; }
+    .layout-v3-sidebar { position: relative; top: 0; height: auto; border-right: none; border-bottom: 1px solid #e2e8f0; }
+  }
+</style>

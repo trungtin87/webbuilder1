@@ -1,0 +1,26 @@
+
+<!--builder
+type=gallery
+name=gallery-v6
+-->
+<section class="gallery-v6">
+  <div class="gallery-v6-carousel">
+    <button class="gallery-v6-btn" onclick="chuyenSlideV6(-1)">◀</button>
+    <div class="gallery-v6-view"><div id="slideV6" class="gallery-v6-slide">🖼️ Bức Ảnh Số 1</div></div>
+    <button class="gallery-v6-btn" onclick="chuyenSlideV6(1)">▶</button>
+  </div>
+</section>
+<style>
+  .gallery-v6 { width:100%; padding:40px 20px; font-family:sans-serif; }
+  .gallery-v6-carousel { max-width:500px; margin:0 auto; display:flex; align-items:center; gap:10px; }
+  .gallery-v6-view { flex:1; height:200px; background:#e2e8f0; border-radius:8px; display:flex; justify-content:center; align-items:center; overflow:hidden; }
+  .gallery-v6-slide { font-weight:bold; color:#475569; font-size:18px; }
+  .gallery-v6-btn { padding:10px 15px; cursor:pointer; background:#334155; color:#fff; border:none; border-radius:4px; }
+</style>
+<script>
+  let indexV6 = 1;
+  function chuyenSlideV6(huong) {
+    indexV6 += huong; if(indexV6 > 3) indexV6 = 1; if(indexV6 < 1) indexV6 = 3;
+    document.getElementById('slideV6').innerText = `🖼️ Bức Ảnh Số ${indexV6}`;
+  }
+</script>

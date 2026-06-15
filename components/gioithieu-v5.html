@@ -1,0 +1,42 @@
+<!--builder
+type=gioithieu
+name=gioithieu-v5
+-->
+<section class="gioithieu-v5">
+  <div class="gioithieu-v5-container">
+    
+    <div class="gioithieu-v5-trai">
+      <h2 class="gioithieu-v5-tieude">Xem Để Hiểu Chúng Tôi Hơn</h2>
+      <p class="gioithieu-v5-noidung">Chúng tôi ghi lại chi tiết các buổi chia sẻ về kỹ thuật lập trình trình dịch và các phương pháp thiết kế hệ thống tối giản. Đoạn video ngắn bên cạnh sẽ tổng hợp nhanh triết lý hoạt động của đội ngũ OpenEduVN.</p>
+    </div>
+    
+    <div class="gioithieu-v5-phai">
+      <div class="gioithieu-v5-videobox">
+        <span class="play-icon">▶️ Video Player Block</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .gioithieu-v5 { width: 100%; background: #ffffff; padding: 80px 20px; font-family: sans-serif; box-sizing: border-box; }
+  .gioithieu-v5-container {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: center;
+  }
+  .gioithieu-v5-tieude { font-size: 32px; color: #111827; margin-bottom: 20px; }
+  .gioithieu-v5-noidung { color: #4b5563; font-size: 16px; line-height: 1.7; }
+  
+  /* Hộp giả lập video */
+  .gioithieu-v5-videobox {
+    width: 100%; height: 300px; background-color: #111827; border-radius: 8px;
+    display: flex; justify-content: center; align-items: center; box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  }
+  .play-icon { color: #9ca3af; font-weight: bold; font-size: 16px; }
+
+  @media (max-width: 768px) {
+    .gioithieu-v5-container { grid-template-columns: 1fr; }
+    .gioithieu-v5-videobox { height: 200px; }
+  }
+</style>

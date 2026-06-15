@@ -1,0 +1,61 @@
+<div class="layout-v2">
+  
+  <header class="layout-v2-header">
+    <div class="layout-v2-inside">[ Header Area ]</div>
+  </header>
+
+  <div class="layout-v2-body">
+    
+    <main class="layout-v2-main">
+      <div class="layout-v2-zone">[ Nội dung chi tiết bài viết (Tin tức Component) ]</div>
+      <div class="layout-v2-zone">[ Vùng bình luận khách hàng ]</div>
+    </main>
+
+    <aside class="layout-v2-sidebar">
+      <div class="layout-v2-side-box">[ Widget 1: Bài viết mới ]</div>
+      <div class="layout-v2-side-box">[ Widget 2: Danh mục cây trồng ]</div>
+    </aside>
+
+  </div>
+
+  <footer class="layout-v2-footer">
+    <div class="layout-v2-inside">[ Footer Area ]</div>
+  </footer>
+
+</div>
+
+<style>
+  .layout-v2 { width: 100%; min-height: 100vh; display: flex; flex-direction: column; font-family: sans-serif; }
+  .layout-v2 * { box-sizing: border-box; }
+  
+  .layout-v2-header { background: #fff; border-bottom: 1px solid #e2e8f0; }
+  
+  /* Thiết lập Grid chia cột */
+  .layout-v2-body {
+    flex: 1;
+    max-width: 1200px;
+    width: 100%;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: 3fr 1fr; /* Tỷ lệ 75% - 25% */
+    gap: 20px;
+    padding: 0 15px;
+  }
+  
+  .layout-v2-inside, .layout-v2-zone, .layout-v2-side-box {
+    padding: 20px; text-align: center; border-radius: 6px; font-weight: bold;
+  }
+  
+  .layout-v2-inside { background: #f1f5f9; color: #334155; }
+  .layout-v2-zone { background: rgba(40, 167, 69, 0.05); border: 2px dashed #28a745; color: #28a745; margin-bottom: 15px; }
+  
+  /* Định hình hộp bên Sidebar */
+  .layout-v2-side-box { background: rgba(253, 126, 20, 0.05); border: 2px dashed #fd7e14; color: #fd7e14; margin-bottom: 15px; }
+  
+  .layout-v2-footer { background: #111827; color: #fff; }
+
+  /* Mobile Responsive: Biến 2 cột thành 1 cột xếp chồng, Sidebar rơi xuống dưới bài viết */
+  @media (max-width: 768px) {
+    .layout-v2-body { grid-template-columns: 1fr; }
+  }
+</style>

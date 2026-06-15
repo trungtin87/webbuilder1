@@ -1,0 +1,55 @@
+<!--builder
+type=thanhdieuhuong
+name=thanhdieuhuong-v4
+--><!-- =======================================================================
+     COMPONENT: THANH DIEU HUONG - V4 (Centered Logo)
+     ======================================================================= -->
+<nav class="thanhdieuhuong-v4">
+  <div class="thanhdieuhuong-container">
+    
+    <!-- Menu nhóm bên trái -->
+    <ul class="thanhdieuhuong-menu nhóm-trai">
+      <li><a href="#">Trang chu</a></li>
+      <li><a href="#">Gioi thieu</a></li>
+    </ul>
+
+    <!-- Logo nằm chính giữa -->
+    <a href="#" class="thanhdieuhuong-logo">WILDNAILS</a>
+
+    <!-- Menu nhóm bên phải -->
+    <ul class="thanhdieuhuong-menu nhóm-phai">
+      <li><a href="#">Bo suu tap</a></li>
+      <li><a href="#">Lien he</a></li>
+    </ul>
+
+  </div>
+</nav>
+
+<style>
+  .thanhdieuhuong-v4 { width: 100%; background: #ffffff; border-bottom: 1px solid #eee; font-family: sans-serif; }
+  .thanhdieuhuong-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between; /* Đẩy 3 khối ra đều */
+    align-items: center;
+  }
+  .thanhdieuhuong-v4 .thanhdieuhuong-logo {
+    font-size: 26px;
+    font-weight: 900;
+    color: #e83e8c; /* Màu hồng nổi bật */
+    text-decoration: none;
+    letter-spacing: 2px;
+  }
+  .thanhdieuhuong-v4 .thanhdieuhuong-menu { display: flex; list-style: none; gap: 30px; margin: 0; padding: 0; width: 35%; }
+  .thanhdieuhuong-v4 .nhóm-trai { justify-content: flex-end; }  /* Đẩy menu trái về sát logo */
+  .thanhdieuhuong-v4 .nhóm-phai { justify-content: flex-start; } /* Đẩy menu phải về sát logo */
+  .thanhdieuhuong-v4 .thanhdieuhuong-menu a { text-decoration: none; color: #555; font-size: 15px; }
+
+  /* Responsive gọn gàng cho điện thoại */
+  @media (max-width: 768px) {
+    .thanhdieuhuong-container { flex-direction: column; gap: 10px; }
+    .thanhdieuhuong-v4 .thanhdieuhuong-menu { width: 100%; justify-content: center; gap: 15px; }
+  }
+</style>

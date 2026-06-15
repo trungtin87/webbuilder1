@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page Preview</title>
+  <!-- Link tới các file CSS tổng và CSS component sẽ được sinh ra ở đây -->
+  <link rel="stylesheet" href="style.css">
+  
+  <style>
+    /* CSS Khung xương hệ thống Layout */
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: sans-serif; background-color: #f9f9f9; }
+
+    /* Thiết lập bố cục tổng thể Grid */
+    .layout-landing-sidebar {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      min-height: 100vh;
+    }
+
+    /* Vùng chứa Thân web: Chia làm 2 cột (Main Content 75% - Sidebar 25%) */
+    .layout-body {
+      display: grid;
+      grid-template-columns: 3fr 1fr; 
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      gap: 20px;
+      padding: 20px;
+    }
+    .h1, .h2, .h3 {
+      margin: 0 0 10px 0;
+      font-family: 'times new roman', sans-serif;
+      font-weight: bold;
+      color: #ff0000;
+    }
+    .vung-header, .vung-footer {
+      background-color: #e90909;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* Đảm bảo Responsive: Trên màn hình nhỏ, Sidebar sẽ rơi xuống dưới */
+    @media (max-width: 768px) {
+      .layout-body {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="layout-landing-sidebar">
+    
+    <!-- VÙNG 1: HEADER -->
+    <header id="vung-header">
+      <!-- BUILDER: CHÈN COMPONENT THANH DIEU HUONG VÀO ĐÂY -->
+       <h1 style="text-align: center; color:#e90909"red">Đây là Header - Chèn Thanh Điều Hướng vào đây</h1>
+    </header>
+
+    <!-- VÙNG 2: THÂN WEBSITE -->
+    <div class="layout-body">
+      
+      <!-- Cột chính bên trái -->
+      <main id="vung-chinh">
+        <!-- BUILDER: CHÈN COMPONENT HERO, GIOI THIEU, CARD... VÀO ĐÂY -->
+      </main>
+
+      <!-- Cột phụ bên phải (Sidebar) -->
+      <aside id="vung-sidebar">
+        <!-- BUILDER: CHÈN COMPONENT TIN TUC NHO, QUANG CAO... VÀO ĐÂY -->
+      </aside>
+
+    </div>
+
+    <!-- VÙNG 3: FOOTER -->
+    <footer id="vung-footer">
+      <!-- BUILDER: CHÈN COMPONENT FOOTER VÀO ĐÂY -->
+    </footer>
+
+  </div>
+
+  <!-- Link tới file Javascript tổng của toàn trang -->
+  <script src="script.js"></script>
+</body>
+</html>

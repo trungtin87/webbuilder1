@@ -1,0 +1,58 @@
+<!--builder
+type=hero
+name=hero-v4
+-->
+<section class="hero-v4">
+  <div class="hero-v4-container">
+    <h1 class="hero-v4-tieude">Đừng bỏ lỡ các công cụ mã nguồn mở tiếp theo</h1>
+    <p class="hero-v4-mota">Nhập email của anh để nhận thông báo sớm nhất mỗi khi OpenEduVN xuất bản sản phẩm mới.</p>
+    
+    <form class="hero-v4-form" onsubmit="event.preventDefault(); alert('Đăng ký kho hàng thành công!');">
+      <input type="email" class="hero-v4-hopnhap" placeholder="Nhập địa chỉ email của anh..." required>
+      <button type="submit" class="hero-v4-nutgui">Đăng Ký</button>
+    </form>
+    
+  </div>
+</section>
+
+<style>
+  .hero-v4 { width: 100%; background: #111827; padding: 90px 20px; text-align: center; font-family: sans-serif; box-sizing: border-box; }
+  .hero-v4-container { max-width: 700px; margin: 0 auto; }
+  .hero-v4-tieude { font-size: 36px; color: #ffffff; margin-bottom: 15px; }
+  .hero-v4-mota { font-size: 16px; color: #9ca3af; margin-bottom: 35px; }
+  
+  /* Thiết kế khối nhập liệu liền mạch dính nhau */
+  .hero-v4-form {
+    display: flex;
+    max-width: 500px;
+    margin: 0 auto;
+    border-radius: 6px;
+    overflow: hidden; /* Cắt góc tròn cho cả cụm bên trong */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+  .hero-v4-hopnhap {
+    flex: 1;
+    padding: 15px 20px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    background: #ffffff;
+  }
+  .hero-v4-nutgui {
+    background-color: #10b981; /* Xanh ngọc lục bảo */
+    color: #ffffff;
+    border: none;
+    padding: 0 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .hero-v4-nutgui:hover { background-color: #059669; }
+
+  @media (max-width: 576px) {
+    .hero-v4-form { flex-direction: column; gap: 10px; background: transparent; box-shadow: none; }
+    .hero-v4-hopnhap { border-radius: 4px; padding: 12px; }
+    .hero-v4-nutgui { border-radius: 4px; padding: 12px; }
+  }
+</style>

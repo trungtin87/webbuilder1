@@ -1,0 +1,22 @@
+<!--builder
+type=pricing
+name=pricing-v2
+-->
+<section class="pricing-v2">
+  <div class="pricing-v2-grid">
+    <div class="pricing-v2-box"><h4>Gói Nhỏ</h4><h2>99k</h2></div>
+    <div class="pricing-v2-box popular">
+      <span class="v2-badge">KHUYÊN DÙNG</span>
+      <h4>Gói Phổ Biến</h4><h2>299k</h2>
+    </div>
+    <div class="pricing-v2-box"><h4>Gói Lớn</h4><h2>599k</h2></div>
+  </div>
+</section>
+<style>
+  .pricing-v2 { width:100%; padding:60px 20px; font-family:sans-serif; box-sizing:border-box; }
+  .pricing-v2-grid { max-width:1000px; margin:0 auto; display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; align-items:center; text-align:center; }
+  .pricing-v2-box { background:#fff; padding:30px 15px; border-radius:8px; border:1px solid #e2e8f0; }
+  .pricing-v2-box.popular { border:2px solid #28a745; transform:scale(1.08); position:relative; box-shadow:0 10px 20px rgba(0,0,0,0.05); }
+  .v2-badge { position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:#28a745; color:#fff; font-size:11px; padding:3px 10px; border-radius:20px; font-weight:bold; }
+  @media(max-width:768px){ .pricing-v2-grid { grid-template-columns:1fr; gap:40px; } .pricing-v2-box.popular { transform:none; } }
+</style>

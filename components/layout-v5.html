@@ -1,0 +1,55 @@
+<div class="layout-v5">
+  
+  <header class="layout-v5-topbar">🛠️ TRÌNH KHỞI TẠO WEBSITE TĨNH V1.0</header>
+
+  <div class="layout-v5-workspace">
+    
+    <aside class="layout-v5-left-panel">📚 THƯ VIỆN COMPONENT</aside>
+
+    <main class="layout-v5-preview-zone">🖥️ MÀN HÌNH PREVIEW TRỰC TIẾP</main>
+
+    <aside class="layout-v5-right-panel">⚙️ THUỘC TÍNH</aside>
+
+  </div>
+
+</div>
+
+<style>
+  .layout-v5 {
+    width: 100%;
+    height: 100vh; /* Khóa chặt không cho tràn màn hình tổng */
+    display: flex;
+    flex-direction: column;
+    font-family: sans-serif;
+    overflow: hidden;
+  }
+  .layout-v5 * { box-sizing: border-box; }
+  
+  .layout-v5-topbar {
+    height: 50px; background: #111827; color: #fff; line-height: 50px; padding: 0 20px; font-weight: bold; letter-spacing: 1px;
+  }
+  
+  /* Lưới không gian làm việc chia làm 3 cột dính chặt */
+  .layout-v5-workspace {
+    flex: 1;
+    display: flex;
+    width: 100%;
+    background: #e2e8f0;
+  }
+  
+  /* Cột trái & Cột phải có chiều rộng cố định, ở giữa tự co giãn full dòng */
+  .layout-v5-left-panel {
+    width: 260px; background: #ffffff; border-right: 1px solid #cbd5e1; padding: 20px; font-weight: bold; color: #475569;
+  }
+  .layout-v5-preview-zone {
+    flex: 1; background: #f8fafc; padding: 20px; font-weight: bold; color: #007bff; overflow-y: auto; display: flex; justify-content: center; align-items: center; border: 4px inset #cbd5e1;
+  }
+  .layout-v5-right-panel {
+    width: 280px; background: #ffffff; border-left: 1px solid #cbd5e1; padding: 20px; font-weight: bold; color: #475569;
+  }
+
+  /* Ẩn bớt panel phụ trên thiết bị di động để tập trung xem trước */
+  @media (max-width: 768px) {
+    .layout-v5-left-panel, .layout-v5-right-panel { display: none; }
+  }
+</style>

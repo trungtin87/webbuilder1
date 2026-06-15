@@ -1,0 +1,19 @@
+<!--builder
+type=faq
+name=faq-v2
+--><div class="faq-v2-item">
+  <div class="faq-v2-trigger" onclick="toggleFaqV2(this)">➕ Khối builder này có responsive không?</div>
+  <div class="faq-v2-panel">Bắt buộc hoạt động mượt mà hoàn hảo trên cả Desktop, Tablet lẫn điện thoại di động thông minh.</div>
+</div>
+<style>
+  .faq-v2-item { max-width:600px; margin:15px auto; font-family:sans-serif; border:1px solid #cbd5e1; border-radius:4px; overflow:hidden; }
+  .faq-v2-trigger { background:#f8fafc; padding:15px; cursor:pointer; font-weight:bold; color:#334155; }
+  .faq-v2-panel { display:none; padding:15px; background:#fff; border-top:1px solid #cbd5e1; color:#475569; font-size:14px; }
+</style>
+<script>
+  function toggleFaqV2(el){
+    const panel = el.nextElementSibling;
+    if(panel.style.display==='block'){ panel.style.display='none'; el.innerText=el.innerText.replace('➖','➕'); }
+    else { panel.style.display='block'; el.innerText=el.innerText.replace('➕','➖'); }
+  }
+</script>

@@ -1,0 +1,49 @@
+<!--builder
+type=gioithieu
+name=gioithieu-v1
+-->
+<section class="gioithieu-v1">
+  <div class="gioithieu-v1-container">
+    <h2 class="gioithieu-v1-tieude">Triết Lý Của Sự Tinh Gọn</h2>
+    <p class="gioithieu-v1-noidung">Chúng tôi tin rằng một website hiệu quả không cần phải gồng gánh những thư viện nặng nề hay những dòng code thừa thãi. Sự thuần khiết trong kiến trúc mã nguồn chính là chìa khóa mở ra tốc độ, tính bảo mật và trải nghiệm người dùng tuyệt vời nhất.</p>
+  </div>
+</section>
+
+<style>
+  .gioithieu-v1 {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 80px 20px;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  .gioithieu-v1-container {
+    max-width: 750px;
+    margin: 0 auto;
+  }
+  .gioithieu-v1-tieude {
+    font-size: 32px;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 15px;
+  }
+  /* Tạo một dấu gạch nhỏ dưới tiêu đề làm điểm nhấn */
+  .gioithieu-v1-tieude::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #007bff;
+    border-radius: 2px;
+  }
+  .gioithieu-v1-noidung {
+    font-size: 16px;
+    color: #4a5568;
+    line-height: 1.8;
+  }
+</style>

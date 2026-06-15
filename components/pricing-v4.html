@@ -1,0 +1,12 @@
+<!--builder
+type=pricing
+name=pricing-v4
+-->
+<div class="pricing-v4-wrap" style="text-align:center; font-family:sans-serif; padding:30px;">
+  <button onclick="toggleGiaV4('thang')" style="padding:5px 15px;">Theo Tháng</button>
+  <button onclick="toggleGiaV4('nam')" style="padding:5px 15px;">Theo Năm</button>
+  <h2 id="giaV4" style="margin-top:20px; color:#007bff;">199k VNĐ / Tháng</h2>
+</div>
+<script>
+  function toggleGiaV4(ky){ document.getElementById('giaV4').innerText = (ky==='thang') ? "199k VNĐ / Tháng" : "1.990k VNĐ / Năm (Tiết kiệm 20%)"; }
+</script>

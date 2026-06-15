@@ -1,0 +1,20 @@
+<!--builder
+type=gallery
+name=gallery-v1
+-->
+<section class="gallery-v1">
+  <div class="gallery-v1-grid">
+    <div class="gallery-v1-img" src="#">📷 Item 1</div>
+    <div class="gallery-v1-img" src="#">📷 Item 2</div>
+    <div class="gallery-v1-img" src="#">📷 Item 3</div>
+    <div class="gallery-v1-img" src="#">📷 Item 4</div>
+    <div class="gallery-v1-img" src="#">📷 Item 5</div>
+    <div class="gallery-v1-img" src="#">📷 Item 6</div>
+  </div>
+</section>
+<style>
+  .gallery-v1 { width:100%; box-sizing:border-box; }
+  .gallery-v1-grid { display:grid; grid-template-columns:repeat(3, 1fr); }
+  .gallery-v1-img { height:200px; background:#cbd5e1; display:flex; justify-content:center; align-items:center; color:#475569; font-weight:bold; border:1px solid #cbd5e1; }
+  @media(max-width:768px){ .gallery-v1-grid { grid-template-columns:1fr; } }
+</style>

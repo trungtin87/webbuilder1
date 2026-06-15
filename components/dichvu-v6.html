@@ -1,0 +1,30 @@
+<!--builder
+type=dichvu
+name=dichvu-v6
+--><section class="dichvu-v6">
+  <div class="dichvu-v6-container">
+    <div class="dichvu-v6-tabs">
+      <button class="dichvu-v6-tab active" onclick="doiTabV6(this, 'tab1')">Thiết Kế Giao Diện</button>
+      <button class="dichvu-v6-tab" onclick="doiTabV6(this, 'tab2')">Tối Ưu SEO</button>
+    </div>
+    <div id="tab1" class="dichvu-v6-content active">Mô tả dịch vụ Thiết kế: Tạo layout bản vẽ dây tinh tế bằng SVG hoặc CSS thuần.</div>
+    <div id="tab2" class="dichvu-v6-content">Mô tả dịch vụ SEO: Đưa website tĩnh của anh lên đỉnh Google nhờ cấu trúc thẻ siêu nhẹ.</div>
+  </div>
+</section>
+<style>
+  .dichvu-v6 { width:100%; padding:50px 20px; font-family:sans-serif; box-sizing:border-box; background:#fff; }
+  .dichvu-v6-container { max-width:600px; margin:0 auto; }
+  .dichvu-v6-tabs { display:flex; gap:10px; margin-bottom:20px; border-bottom:2px solid #e2e8f0; }
+  .dichvu-v6-tab { background:none; border:none; padding:10px 20px; font-size:15px; cursor:pointer; color:#64748b; font-weight:bold; }
+  .dichvu-v6-tab.active { color:#007bff; border-bottom:2px solid #007bff; }
+  .dichvu-v6-content { display:none; padding:15px; background:#f8fafc; border-radius:4px; line-height:1.6; color:#334155; }
+  .dichvu-v6-content.active { display:block; }
+</style>
+<script>
+  function doiTabV6(nut, idTab) {
+    document.querySelectorAll('.dichvu-v6-tab').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.dichvu-v6-content').forEach(c => c.classList.remove('active'));
+    nut.classList.add('active');
+    document.getElementById(idTab).classList.add('active');
+  }
+</script>

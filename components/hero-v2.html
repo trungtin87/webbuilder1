@@ -1,0 +1,69 @@
+
+<!--builder
+type=hero
+name=hero-v2
+-->
+<section class="hero-v2">
+  <div class="hero-v2-container">
+    
+    <div class="hero-v2-trai">
+      <h1 class="hero-v2-tieude">Lập trình bằng tiếng Việt thực sự dễ dàng</h1>
+      <p class="hero-v2-mota">Xây dựng hệ sinh thái việt hóa mã nguồn mở, giúp thế hệ trẻ tiếp cận tư duy lập trình máy tính một cách tự nhiên nhất.</p>
+      <a href="#" class="hero-v2-nut">Học Thử Ngay</a>
+    </div>
+    
+    <div class="hero-v2-phai">
+      <div class="hero-v2-khunganh">
+        <span class="hero-v2-icon-anh">🖼️ Photo Mockup</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .hero-v2 { width: 100%; background: #ffffff; padding: 80px 20px; font-family: sans-serif; box-sizing: border-box; }
+  .hero-v2-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Chia 2 cột đều */
+    gap: 40px;
+    align-items: center;
+  }
+  .hero-v2-trai { text-align: left; }
+  .hero-v2-tieude { font-size: 38px; color: #1a1a1a; margin-bottom: 20px; line-height: 1.3; }
+  .hero-v2-mota { font-size: 16px; color: #666; margin-bottom: 30px; line-height: 1.6; }
+  .hero-v2-nut {
+    display: inline-block;
+    background-color: #007bff; /* Màu xanh dương công nghệ */
+    color: #fff;
+    padding: 12px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+  .hero-v2-nut:hover { background-color: #0056b3; }
+  
+  /* Khung ảnh giả lập bằng CSS tinh tế */
+  .hero-v2-khunganh {
+    width: 100%;
+    height: 300px;
+    background-color: #f4f6f9;
+    border: 2px dashed #cbd5e1;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hero-v2-icon-anh { color: #94a3b8; font-weight: bold; }
+
+  /* Responsive: Rơi cột trên mobile */
+  @media (max-width: 768px) {
+    .hero-v2-container { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+    .hero-v2-trai { text-align: center; }
+    .hero-v2-tieude { font-size: 28px; }
+    .hero-v2-khunganh { height: 200px; }
+  }
+</style>

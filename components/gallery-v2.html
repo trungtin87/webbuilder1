@@ -1,0 +1,17 @@
+<!--builder
+type=gallery
+name=gallery-v2
+-->
+<section class="gallery-v2">
+  <div class="gallery-v2-grid">
+    <div class="gallery-v2-box">📷 Nông Trại</div>
+    <div class="gallery-v2-box">📷 Vườn Ươm</div>
+    <div class="gallery-v2-box">📷 Hệ Thống Nước</div>
+  </div>
+</section>
+<style>
+  .gallery-v2 { width:100%; padding:40px 20px; background:#f8fafc; box-sizing:border-box; }
+  .gallery-v2-grid { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; }
+  .gallery-v2-box { height:220px; background:#94a3b8; border-radius:12px; display:flex; justify-content:center; align-items:center; color:#fff; font-weight:bold; }
+  @media(max-width:768px){ .gallery-v2-grid { grid-template-columns:1fr; } }
+</style>

@@ -1,0 +1,67 @@
+<!--builder
+type=thanhdieuhuong
+name=thanhdieuhuong-v5
+-->
+<!-- =======================================================================
+     COMPONENT: THANH DIEU HUONG - V5 (Top Bar)
+     ======================================================================= -->
+<div class="thanhdieuhuong-v5-wrapper">
+  
+  <!-- Tầng 1: Thanh thông báo nhỏ -->
+  <div class="top-bar">
+    <div class="top-bar-container">
+      <span>📞 Hotline: 0123.xxx.xxx | 📍 Trang Bang, Tay Ninh</span>
+      <div class="top-bar-links">
+        <a href="#">FB</a> | <a href="#">GH</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tầng 2: Thanh điều hướng chính -->
+  <nav class="thanhdieuhuong-v5">
+    <div class="thanhdieuhuong-container">
+      <a href="#" class="thanhdieuhuong-logo">OpenEduVN</a>
+      <ul class="thanhdieuhuong-menu">
+        <li><a href="#">Trang chu</a></li>
+        <li><a href="#">Dich vu</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+      <!-- Nút hành động nổi bật bên phải -->
+      <a href="#" class="nut-cta">Gia nhap ngay</a>
+    </div>
+  </nav>
+
+</div>
+
+<style>
+  .thanhdieuhuong-v5-wrapper { width: 100%; font-family: sans-serif; }
+  /* Style Tầng trên */
+  .top-bar { background: #f4f6f9; color: #6c757d; font-size: 13px; border-bottom: 1px solid #e1e4e8; }
+  .top-bar-container { max-width: 1200px; margin: 0 auto; padding: 8px 20px; display: flex; justify-content: space-between; }
+  .top-bar-links a { color: #6c757d; text-decoration: none; margin: 0 5px; }
+  
+  /* Style Tầng dưới */
+  .thanhdieuhuong-v5 { background: #ffffff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+  .thanhdieuhuong-v5 .thanhdieuhuong-logo { font-size: 24px; font-weight: bold; text-decoration: none; color: #333; }
+  .thanhdieuhuong-v5 .thanhdieuhuong-menu { display: flex; list-style: none; gap: 20px; margin: 0; padding: 0; }
+  .thanhdieuhuong-v5 .thanhdieuhuong-menu a { text-decoration: none; color: #333; }
+  
+  /* Nút bấm CTA */
+  .thanhdieuhuong-v5 .nut-cta {
+    background-color: #28a745;
+    color: #ffffff;
+    padding: 1px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background 0.2s;
+  }
+  .thanhdieuhuong-v5 .nut-cta:hover { background-color: #218838; }
+
+  @media (max-width: 768px) {
+    .top-bar { display: none; } /* Ẩn tầng trên ở mobile cho gọn */
+    .thanhdieuhuong-container { flex-direction: column; gap: 15px; text-align: center; }
+    .thanhdieuhuong-v5 .thanhdieuhuong-menu { justify-content: center; }
+  }
+</style>

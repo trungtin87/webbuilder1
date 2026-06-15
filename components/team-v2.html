@@ -1,0 +1,17 @@
+<!--builder
+type=team
+name=team-v2
+-->
+<div class="team-v2-card">
+  <div class="team-v2-avatar">MOCKUP PHOTO</div>
+  <div class="team-v2-overlay">
+    <a href="#">🔗 GitHub</a> | <a href="#">🔗 Facebook</a>
+  </div>
+</div>
+<style>
+  .team-v2-card { width:220px; height:260px; background:#cbd5e1; position:relative; overflow:hidden; border-radius:8px; margin:20px auto; font-family:sans-serif; }
+  .team-v2-avatar { width:100%; height:100%; display:flex; justify-content:center; align-items:center; color:#475569; font-weight:bold; }
+  .team-v2-overlay { position:absolute; bottom:-100%; left:0; width:100%; background:rgba(0,0,0,0.8); padding:15px 0; text-align:center; transition:bottom 0.3s ease; }
+  .team-v2-overlay a { color:#fff; text-decoration:none; font-size:13px; margin:0 5px; }
+  .team-v2-card:hover .team-v2-overlay { bottom:0; }
+</style>

@@ -1,0 +1,16 @@
+
+<!--builder
+type=lienhe
+name=lienhe-v1
+-->
+<form class="lienhe-v1-form" onsubmit="event.preventDefault(); alert('Gửi tin thành công!');">
+  <input type="text" placeholder="Họ và tên của anh..." required>
+  <input type="email" placeholder="Địa chỉ email..." required>
+  <textarea placeholder="Lời nhắn nội dung gửi đến OpenEduVN..." rows="4" required></textarea>
+  <button type="submit">Gửi Liên Hệ</button>
+</form>
+<style>
+  .lienhe-v1-form { max-width:450px; margin:30px auto; display:flex; flex-direction:column; gap:15px; font-family:sans-serif; }
+  .lienhe-v1-form input, .lienhe-v1-form textarea { padding:12px; border:1px solid #cbd5e1; border-radius:4px; outline:none; font-size:14px; }
+  .lienhe-v1-form button { background:#28a745; color:#fff; border:none; padding:12px; font-weight:bold; border-radius:4px; cursor:pointer; }
+</style>

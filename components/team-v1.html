@@ -1,0 +1,21 @@
+<!--builder
+type=team
+name=team-v1
+-->
+<section class="team-v1">
+  <div class="team-v1-grid">
+    <div class="team-v1-member">👤 <h4>Đinh Tín</h4><p>Lead Engineer</p></div>
+    <div class="team-v1-member">👤 <h4>Thành Viên A</h4><p>Rust Specialist</p></div>
+    <div class="team-v1-member">👤 <h4>Thành Viên B</h4><p>UI Designer</p></div>
+    <div class="team-v1-member">👤 <h4>Thành Viên C</h4><p>Core Translator</p></div>
+  </div>
+</section>
+<style>
+  .team-v1 { width:100%; padding:40px 20px; font-family:sans-serif; box-sizing:border-box; background:#fff; }
+  .team-v1-grid { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(4, 1fr); gap:20px; text-align:center; }
+  .team-v1-member { background:#f8fafc; padding:25px 15px; border-radius:8px; border:1px solid #e2e8f0; }
+  .team-v1-member h4 { margin:10px 0 5px 0; color:#1e293b; }
+  .team-v1-member p { margin:0; color:#64748b; font-size:13px; }
+  @media(max-width:768px){ .team-v1-grid { grid-template-columns:repeat(2, 1fr); } }
+  @media(max-width:480px){ .team-v1-grid { grid-template-columns:1fr; } }
+</style>

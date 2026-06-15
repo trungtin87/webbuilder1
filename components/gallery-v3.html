@@ -1,0 +1,17 @@
+  <!--builder
+type=gallery
+name=gallery-v3
+-->
+<section class="gallery-v3">
+  <div class="gallery-v3-columns">
+    <div class="gallery-v3-item" style="height:150px;">Ảnh Ngắn</div>
+    <div class="gallery-v3-item" style="height:280px;">Ảnh Siêu Dài</div>
+    <div class="gallery-v3-item" style="height:200px;">Ảnh Vừa Vặn</div>
+  </div>
+</section>
+<style>
+  .gallery-v3 { width:100%; padding:30px 20px; font-family:sans-serif; box-sizing:border-box; }
+  .gallery-v3-columns { max-width:900px; margin:0 auto; column-count:3; column-gap:15px; }
+  .gallery-v3-item { width:100%; background:#cbd5e1; margin-bottom:15px; display:inline-block; border-radius:6px; display:flex; justify-content:center; align-items:center; color:#334155; font-weight:bold; }
+  @media(max-width:600px){ .gallery-v3-columns { column-count:1; } }
+</style>

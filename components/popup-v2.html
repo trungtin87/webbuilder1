@@ -1,0 +1,33 @@
+<!--builder
+type=popup
+name=popup-v2
+-->
+<div id="global-popup-donate" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); z-index: 99999; justify-content: center; align-items: center; font-family: sans-serif;">
+  <div style="background: #fff; width: 90%; max-width: 450px; padding: 25px; border-radius: 12px; text-align: center; position: relative;">
+    <button onclick="closeDonatePopup()" style="position: absolute; top: 10px; right: 15px; background: none; border: none; font-size: 18px; cursor: pointer; color: #64748b;">✕</button>
+    
+    <h3 style="margin: 0 0 10px 0; color: #0284c7;">🌱 Đồng Hành Cùng OpenEduVN</h3>
+    <p style="color: #64748b; font-size: 13px; margin-bottom: 15px;">Chung tay quét rào cản ngôn ngữ, số hóa truyện tranh AI miễn phí cho thế hệ trẻ.</p>
+    
+    <div style="margin: 15px 0;">
+      <img src="https://images.unsplash.com/photo-1621504450181-5d38a4990590?q=80&w=250" alt="Mã QR Donate" style="width: 180px; height: 180px; object-fit: cover; border: 1px solid #e2e8f0; padding: 5px; border-radius: 8px;">
+    </div>
+    
+    <p style="font-size: 12px; color: #94a3b8; margin-bottom: 15px;">Mọi đóng góp đều được công khai minh bạch trên GitHub tổ chức.</p>
+    <button onclick="closeDonatePopup()" style="background: #e2e8f0; color: #475569; border: none; padding: 8px 20px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: bold;">Đóng thông báo</button>
+  </div>
+</div>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    if (!localStorage.getItem('openeduvn_donate_closed')) {
+      setTimeout(() => {
+        document.getElementById('global-popup-donate').style.style.display = 'flex';
+      }, 3000);
+    }
+  });
+  function closeDonatePopup() {
+    document.getElementById('global-popup-donate').style.display = 'none';
+    localStorage.setItem('openeduvn_donate_closed', 'true');
+  }
+</script>

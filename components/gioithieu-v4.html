@@ -1,0 +1,54 @@
+
+<!--builder
+type=gioithieu
+name=gioithieu-v4
+-->
+<section class="gioithieu-v4">
+  <div class="gioithieu-v4-container">
+    <h2 class="gioithieu-v4-tieude-chinh">Cột Mốc Phát Triển</h2>
+    <div class="gioithieu-v4-timeline">
+      
+      <div class="timeline-item">
+        <div class="timeline-vongtron"></div>
+        <div class="timeline-noidung">
+          <span class="timeline-nam">Giai đoạn 1</span>
+          <h4>Xây dựng tổng kho component</h4>
+          <p>Triển khai cày cuốc full bộ 60 cấu trúc giao diện cốt lõi cô lập.</p>
+        </div>
+      </div>
+      
+      <div class="timeline-item">
+        <div class="timeline-vongtron"></div>
+        <div class="timeline-noidung">
+          <span class="timeline-nam">Giai đoạn 2</span>
+          <h4>Ghép thử nghiệm website</h4>
+          <p>Tiến hành ghép tay thủ công 10 trang web thực tế để tối ưu hóa CSS.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .gioithieu-v4 { width: 100%; background: #f1f5f9; padding: 80px 20px; font-family: sans-serif; box-sizing: border-box; }
+  .gioithieu-v4-container { max-width: 800px; margin: 0 auto; text-align: center; }
+  .gioithieu-v4-tieude-chinh { font-size: 32px; color: #1e293b; margin-bottom: 5px; }
+  
+  /* Tạo đường trục dọc ở chính giữa */
+  .gioithieu-v4-timeline { position: relative; max-width: 600px; margin: 50px auto 0 auto; padding: 10px 0; text-align: left; }
+  .gioithieu-v4-timeline::after {
+    content: ''; position: absolute; width: 4px; background-color: #cbd5e1; top: 0; bottom: 0; left: 20px;
+  }
+  
+  .timeline-item { position: relative; margin-bottom: 40px; padding-left: 50px; }
+  /* Vòng tròn định vị trên trục */
+  .timeline-vongtron {
+    position: absolute; width: 16px; height: 16px; border-radius: 50%; background-color: #28a745;
+    left: 14px; top: 4px; z-index: 2; border: 3px solid #fff;
+  }
+  .timeline-noidung { background: #fff; padding: 20px; border-radius: 6px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+  .timeline-nam { display: inline-block; background: #e2e8f0; color: #475569; font-size: 12px; font-weight: bold; padding: 3px 8px; border-radius: 4px; margin-bottom: 8px; }
+  .timeline-noidung h4 { margin: 0 0 10px 0; color: #1e293b; font-size: 18px; }
+  .timeline-noidung p { margin: 0; color: #64748b; font-size: 14px; line-height: 1.5; }
+</style>

@@ -1,0 +1,59 @@
+<!--builder
+type=hero
+name=hero-v5
+-->
+<section class="hero-v5">
+  <div class="hero-v5-video-giaphlap"></div>
+  <div class="hero-v5-manchan"></div>
+  
+  <div class="hero-v5-container">
+    <h1 class="hero-v5-tieude">Kỹ Thuật Phần Cứng & Cơ Khí Chính Xác</h1>
+    <p class="hero-v5-mota">Mô phỏng chuyển động động cơ 2 thì, 4 thì trực quan bằng mô hình 3D tinh gọn.</p>
+    <a href="#" class="hero-v5-nut">Xem Bản Mô Phỏng</a>
+  </div>
+</section>
+
+<style>
+  .hero-v5 {
+    width: 100%;
+    height: 450px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    box-sizing: border-box;
+  }
+  /* Giả lập hiệu ứng video động bằng animation CSS chuyển màu mượt */
+  .hero-v5-video-giaphlap {
+    position: absolute;
+    top:0; left:0; width:100%; height:100%;
+    background: linear-gradient(45deg, #4f46e5, #06b6d4);
+    background-size: 200% 200%;
+    animation: chayNenVideo 6s ease infinite;
+    z-index: 1;
+  }
+  @keyframes chayNenVideo {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .hero-v5-manchan { position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.4); z-index: 2; }
+  
+  .hero-v5-container { position: relative; z-index: 3; max-width: 800px; text-align: center; color: #fff; padding: 0 20px; }
+  .hero-v5-tieude { font-size: 38px; font-weight: bold; margin-bottom: 15px; }
+  .hero-v5-mota { font-size: 16px; opacity: 0.9; margin-bottom: 30px; }
+  .hero-v5-nut {
+    display: inline-block;
+    background: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    padding: 12px 28px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: all 0.2s;
+  }
+  .hero-v5-nut:hover { background: #ffffff; color: #4f46e5; }
+</style>

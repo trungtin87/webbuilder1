@@ -1,0 +1,56 @@
+<!--builder
+type=hero
+name=hero-v6
+-->
+<section class="hero-v6">
+  <div class="hero-v6-container">
+    <h1 class="hero-v6-tieude">Nông Nghiệp Tuần Hoàn & Bền Vững</h1>
+    <p class="hero-v6-mota">Ứng dụng phương pháp che phủ hữu cơ, tối ưu hóa hệ thống thu gom nước tưới cho mảnh vườn canh tác xanh sạch.</p>
+    
+    <div class="hero-v6-khoinut">
+      <a href="#" class="hero-v6-nut-chinh">Đọc Quy Trình Trồng</a>
+      <a href="#" class="hero-v6-nut-phu">Liên Hệ Nhận Giống</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-v6 { width: 100%; background: #f0fdf4; padding: 100px 20px; text-align: center; font-family: sans-serif; box-sizing: border-box; }
+  .hero-v6-container { max-width: 800px; margin: 0 auto; }
+  .hero-v6-tieude { font-size: 40px; color: #166534; margin-bottom: 20px; }
+  .hero-v6-mota { font-size: 18px; color: #374151; margin-bottom: 35px; line-height: 1.6; }
+  
+  .hero-v6-khoinut {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Khoảng cách giữa 2 nút */
+  }
+  .hero-v6-nut-chinh {
+    display: inline-block;
+    background-color: #15803d;
+    color: #ffffff;
+    padding: 14px 30px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.2s;
+  }
+  .hero-v6-nut-chinh:hover { background-color: #166534; }
+  
+  .hero-v6-nut-phu {
+    display: inline-block;
+    background-color: #e2e8f0;
+    color: #334155;
+    padding: 14px 30px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.2s;
+  }
+  .hero-v6-nut-phu:hover { background-color: #cbd5e1; }
+
+  @media (max-width: 576px) {
+    .hero-v6-khoinut { flex-direction: column; gap: 10px; align-items: center; }
+    .hero-v6-nut-chinh, .hero-v6-nut-phu { width: 100%; max-width: 280px; box-sizing: border-box; }
+  }
+</style>

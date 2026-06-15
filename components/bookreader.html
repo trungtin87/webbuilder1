@@ -1,0 +1,56 @@
+<!--builder
+type=bookreader
+name=bookreader
+-->
+<!-- Component: baiviet-flipbook-epub -->
+<div class="art-v2-flipbook" style="max-width: 850px; margin: 40px auto; font-family: 'Merriweather', serif;">
+  
+  <div id="epub-book" style="width: 800px; height: 550px; margin: 0 auto; box-shadow: 0 15px 30px rgba(0,0,0,0.15); border: 1px solid #cbd5e1; border-radius: 4px;">
+    
+    <!-- Trang 1: Trang Tựa Sách -->
+    <div class="epub-page" style="background: #fcfaf2; padding: 50px; display:flex; flex-direction:column; justify-content:space-between; border-right: 1px solid #e2e8f0;">
+      <div style="border-bottom: 2px solid #2c3e50; padding-bottom: 20px;">
+        <span style="font-family:sans-serif; font-size:12px; color:#64748b; letter-spacing:2px; text-transform:uppercase;">Tủ Sách Tri Thức Mở</span>
+        <h2 style="font-size: 32px; color: #2c3e50; margin: 10px 0 0 0;">Cẩm Nang Thiết Kế Trình Biên Dịch Tĩnh</h2>
+      </div>
+      <p style="font-size: 14px; font-style: italic; color:#64748b;">Phiên bản số hóa định dạng tương thích ePub</p>
+    </div>
+
+    <!-- Trang 2: Chương 1 (Bên trái) -->
+    <div class="epub-page" style="background: #fcfaf2; padding: 40px; font-size: 15px; line-height: 1.8; color: #2c3e50; border-right: 1px solid #e2e8f0;">
+      <h4 style="font-family:sans-serif; margin-top:0; color:#007bff;">CHƯƠNG I: KIẾN TRÚC LÕI</h4>
+      <p>Việc biên dịch một ngôn ngữ từ dạng ký tự thuần túy sang cấu trúc cây cú pháp trừu tượng (AST) đòi hỏi một bộ xử lý từ vựng (Lexer) hoạt động cực kỳ chính xác.</p>
+      <p>Đối với hệ sinh thái tiếng Việt, chúng ta cần giải quyết bài toán mã hóa UTF-8 để nhận diện chính xác các dấu thanh đặc trưng.</p>
+    </div>
+
+    <!-- Trang 3: Chương 1 tiếp theo (Bên phải) -->
+    <div class="epub-page" style="background: #fcfaf2; padding: 40px; font-size: 15px; line-height: 1.8; color: #2c3e50;">
+      <p>Sau khi Lexer bẻ gãy chuỗi văn bản thành các Token riêng biệt, Parser sẽ đảm nhận nhiệm vụ ráp nối chúng lại theo các quy tắc ngữ pháp đã định sẵn.</p>
+      <div style="margin: 20px 0; text-align:center;">
+        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=300" style="width:80%; border-radius:4px;" alt="Coding">
+      </div>
+    </div>
+
+    <!-- Trang 4: Trang kết thúc -->
+    <div class="epub-page" style="background: #fcfaf2; padding: 50px; display:flex; align-items:center; justify-content:center;">
+      <div style="text-align:center; font-family:sans-serif;">
+        <span style="font-size:24px;">❦</span>
+        <p style="font-size:14px; color:#64748b; margin-top:10px;">Cảm ơn bạn đã đón đọc.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const epubFlip = new St.PageFlip(document.getElementById('epub-book'), {
+        width: 400,
+        height: 550,
+        size: "fixed",
+        drawShadow: true,
+        showCover: false // Không dùng bìa cứng độc lập, mở ra là thấy trang đôi luôn
+      });
+      epubFlip.loadFromHTML(document.querySelectorAll('#epub-book .epub-page'));
+    });
+  </script>
+</div>

@@ -1,0 +1,44 @@
+<!-- =======================================================================
+     COMPONENT: THANH DIEU HUONG - V3 (Transparent)
+     ======================================================================= -->
+<nav class="thanhdieuhuong-v3">
+  <div class="thanhdieuhuong-container">
+    <a href="#" class="thanhdieuhuong-logo">OpenEduVN</a>
+    <ul class="thanhdieuhuong-menu">
+      <li><a href="#">Trang chu</a></li>
+      <li><a href="#">Du an</a></li>
+      <li><a href="#">Lien he</a></li>
+    </ul>
+  </div>
+</nav>
+
+<style>
+  .thanhdieuhuong-v3 {
+    width: 100%;
+    background-color: transparent; /* Trong suốt */
+    position: absolute; /* Đặt đè lên khối phía dưới */
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    font-family: sans-serif;
+    transition: background 0.3s;
+  }
+  .thanhdieuhuong-v3 .thanhdieuhuong-logo { color: #e61414; text-decoration: none; font-size: 24px; font-weight: bold; }
+  .thanhdieuhuong-v3 .thanhdieuhuong-menu a { color: #000000; text-decoration: none; opacity: 0.8; }
+  .thanhdieuhuong-v3 .thanhdieuhuong-menu a:hover { opacity: 1; }
+  
+  /* Khi cuộn trang biến thành nền tối sang trọng */
+  .thanhdieuhuong-v3.nen-toi {
+    position: fixed;
+    background-color: #1a1a1a;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  }
+</style>
+
+<script>
+  window.addEventListener('scroll', function() {
+    const navV3 = document.querySelector('.thanhdieuhuong-v3');
+    if (window.scrollY > 80) { navV3.classList.add('nen-toi'); } 
+    else { navV3.classList.remove('nen-toi'); }
+  });
+</script>

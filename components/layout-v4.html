@@ -1,0 +1,44 @@
+<div class="layout-v4">
+  <header class="layout-v4-header"><div class="layout-v4-inside">[ Header ]</div></header>
+
+  <main class="layout-v4-grid-container">
+    <div class="layout-v4-column">[ Thả linh kiện cột 1 (Ví dụ: Card dự án A) ]</div>
+    <div class="layout-v4-column">[ Thả linh kiện cột 2 (Ví dụ: Card dự án B) ]</div>
+    <div class="layout-v4-column">[ Thả linh kiện cột 3 (Ví dụ: Card dự án C) ]</div>
+  </main>
+
+  <footer class="layout-v4-footer"><div class="layout-v4-inside">[ Footer ]</div></footer>
+</div>
+
+<style>
+  .layout-v4 { width: 100%; min-height: 100vh; display: flex; flex-direction: column; font-family: sans-serif; }
+  .layout-v4 * { box-sizing: border-box; }
+  .layout-v4-header, .layout-v4-footer { background: #f1f5f9; padding: 15px; text-align: center; font-weight: bold; }
+  
+  /* Lưới 3 cột đều tăm tắp */
+  .layout-v4-grid-container {
+    flex: 1;
+    max-width: 1200px;
+    width: 100%;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    padding: 0 15px;
+  }
+  
+  .layout-v4-column {
+    background: rgba(232, 62, 140, 0.05);
+    border: 2px dashed #e83e8c;
+    color: #e83e8c;
+    padding: 30px 15px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 8px;
+    min-height: 300px;
+  }
+
+  /* Tự động rơi cột: Máy tính 3 cột -> Máy tính bảng 2 cột -> Điện thoại 1 cột */
+  @media (max-width: 992px) { .layout-v4-grid-container { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 576px) { .layout-v4-grid-container { grid-template-columns: 1fr; } }
+</style>

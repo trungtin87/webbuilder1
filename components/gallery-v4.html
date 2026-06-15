@@ -1,0 +1,36 @@
+  <!--builder
+type=gallery
+name=gallery-v4
+-->
+<section class="gallery-v4">
+  <div class="gallery-v4-container">
+    <div class="gallery-v4-filters">
+      <button onclick="locGalleryV4('tatca')">Tất Cả</button>
+      <button onclick="locGalleryV4('code')">Mã Nguồn</button>
+      <button onclick="locGalleryV4('cay')">Cây Trồng</button>
+    </div>
+    <div class="gallery-v4-grid">
+      <div class="gallery-v4-item v4-code">💻 File VietJS</div>
+      <div class="gallery-v4-item v4-cay">🌱 Cây Bao Báp</div>
+      <div class="gallery-v4-item v4-code">💻 AST Parser</div>
+    </div>
+  </div>
+</section>
+<style>
+  .gallery-v4 { width:100%; padding:40px 20px; font-family:sans-serif; box-sizing:border-box; }
+  .gallery-v4-container { max-width:1000px; margin:0 auto; }
+  .gallery-v4-filters { text-align:center; margin-bottom:25px; }
+  .gallery-v4-filters button { padding:8px 16px; margin:0 5px; cursor:pointer; background:#e2e8f0; border:none; border-radius:4px; }
+  .gallery-v4-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:15px; }
+  .gallery-v4-item { height:150px; background:#94a3b8; display:flex; justify-content:center; align-items:center; color:#fff; font-weight:bold; border-radius:6px; }
+  @media(max-width:768px){ .gallery-v4-grid { grid-template-columns:1fr; } }
+</style>
+<script>
+  function locGalleryV4(loai) {
+    document.querySelectorAll('.gallery-v4-item').forEach(item => {
+      if(loai === 'tatca') item.style.display = 'flex';
+      else if(item.classList.contains('v4-' + loai)) item.style.display = 'flex';
+      else item.style.display = 'none';
+    });
+  }
+</script>

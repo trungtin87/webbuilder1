@@ -1,0 +1,47 @@
+<!--builder
+type=popup
+name=popup-v1
+-->
+<div id="global-popup-notice" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.7); z-index: 99999; justify-content: center; align-items: center; font-family: sans-serif; backdrop-filter: blur(4px);">
+  <div style="background: #fff; width: 90%; max-width: 500px; padding: 30px; border-radius: 16px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); text-align: center; position: relative; animation: popupAnim 0.3s ease-out;">
+    
+    <button onclick="closeGlobalPopup()" style="position: absolute; top: 15px; right: 15px; background: none; border: none; font-size: 20px; cursor: pointer; color: #94a3b8;">✕</button>
+    
+    <div style="font-size: 40px; margin-bottom: 15px;">📢</div>
+    
+    <h3 style="margin: 0 0 10px 0; color: #0f172a; font-size: 22px;">Thông Báo Quan Trọng!</h3>
+    <p style="color: #475569; font-size: 15px; line-height: 1.6; margin-bottom: 25px;">
+      Chào mừng bạn đến với hệ sinh thái OpenEduVN. Tập truyện tranh ngắn AI mới nhất vừa được cập nhật trực tiếp trên thư viện Google Drive!
+    </p>
+    
+    <a href="#" onclick="closeGlobalPopup()" style="display: inline-block; background: #10b981; color: #fff; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(16,185,129,0.4);">Đọc Ngay Thôi 🚀</a>
+  </div>
+</div>
+
+<style>
+  @keyframes popupAnim {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+</style>
+
+<script>
+  // Bộ não điều khiển Popup ngầm trên Web tĩnh
+  window.addEventListener('DOMContentLoaded', () => {
+    // 1. Kiểm tra xem người đọc đã từng bấm đóng popup này trong ngày hôm nay chưa
+    const isPopped = localStorage.getItem('openeduvn_popup_closed');
+    
+    // Nếu chưa từng đóng, cho kích hoạt hiện popup sau 2 giây (2000ms) để tăng trải nghiệm đọc mượt mà
+    if (!isPopped) {
+      setTimeout(() => {
+        document.getElementById('global-popup-notice').style.display = 'flex';
+      }, 2000);
+    }
+  });
+
+  function closeGlobalPopup() {
+    document.getElementById('global-popup-notice').style.display = 'none';
+    // Ghi nhớ vào trình duyệt là khách đã đóng, lần sau vào lại trang sẽ không hiện lên làm phiền nữa
+    localStorage.setItem('openeduvn_popup_closed', 'true');
+  }
+</script>

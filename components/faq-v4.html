@@ -1,0 +1,14 @@
+<!--builder
+type=faq
+name=faq-v4
+--><div class="faq-v4-wrap" style="max-width:500px; margin:20px auto; font-family:sans-serif; text-align:center;">
+  <input id="faqSearch" type="text" onkeyup="searchFaqV4()" placeholder="Tìm câu hỏi nhanh..." style="width:100%; padding:10px; border-radius:4px; border:1px solid #ccc; box-sizing:border-box;">
+  <p id="faqItem" style="margin-top:15px; font-weight:bold; color:#333;">❓ Cách xuất bản website lên GitHub Pages?</p>
+</div>
+<script>
+  function searchFaqV4(){
+    const input = document.getElementById('faqSearch').value.toLowerCase();
+    const item = document.getElementById('faqItem');
+    item.style.display = item.innerText.toLowerCase().includes(input) ? 'block' : 'none';
+  }
+</script>
