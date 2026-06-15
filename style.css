@@ -1,0 +1,165 @@
+/* Quy tắc chung cho Builder */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f6fa;
+    color: #333;
+}
+
+.builder-container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Sidebar bên trái */
+.sidebar {
+    width: 350px;
+    background-color: #ffffff;
+    border-right: 2px solid #dcdde1;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.sidebar h2 {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #2f3640;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #dcdde1;
+    margin: 15px 0;
+}
+
+/* Khung tìm kiếm */
+.search-box input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #b2bec3;
+    border-radius: 4px;
+    outline: none;
+}
+
+/* Panel hiển thị danh sách component */
+.panel-section h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: #718093;
+    margin-bottom: 10px;
+}
+
+.category-title {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+    color: #2f3640;
+}
+
+.component-item {
+    display: flex;
+    align-items: center;
+    padding: 6px 10px;
+    background: #f8f9fa;
+    margin-bottom: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.component-item:hover {
+    background: #e1b12c;
+    color: white;
+}
+
+.component-item input {
+    margin-right: 10px;
+}
+
+/* Selected List và các nút sắp xếp */
+.selected-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+    background: #f1f2f6;
+    border: 1px solid #ced6e0;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.selected-item-actions button {
+    background: #ffffff;
+    border: 1px solid #a4b0be;
+    padding: 2px 6px;
+    cursor: pointer;
+    border-radius: 3px;
+    margin-left: 2px;
+    font-weight: bold;
+}
+
+.selected-item-actions button:hover {
+    background: #2f3640;
+    color: white;
+}
+
+.selected-item-actions .btn-delete {
+    color: #ea2027;
+}
+.selected-item-actions .btn-delete:hover {
+    background: #ea2027;
+    color: white;
+}
+
+/* Nút Export */
+.btn-export {
+    background-color: #4cd137;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: auto; /* Đẩy nút xuống đáy sidebar */
+    transition: background 0.2s;
+}
+
+.btn-export:hover {
+    background-color: #44bd32;
+}
+
+/* Khu vực hiển thị Preview bên phải */
+.preview-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #718093;
+}
+
+.preview-header {
+    background-color: #2f3640;
+    color: #f5f6fa;
+    padding: 10px;
+    text-align: center;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+#preview-content {
+    flex: 1;
+    background: #ffffff;
+    overflow-y: auto;
+    border: 10px solid #2f3640;
+    border-top: none;
+}

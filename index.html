@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Builder V1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="builder-container">
+        
+        <div class="sidebar">
+            <h2>Website Builder V1</h2>
+            <hr>
+            
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Tìm kiếm component... (vd: hero)">
+            </div>
+            
+            <div class="panel-section">
+                <h3>Components Panel</h3>
+                <div id="components-list">
+                    </div>
+            </div>
+            
+            <hr>
+            
+            <div class="panel-section">
+                <h3>Selected Panel</h3>
+                <div id="selected-list" class="selected-list">
+                    </div>
+            </div>
+            
+            <hr>
+            
+            <button id="export-btn" class="btn-export">Export index.html</button>
+        </div>
+        
+        <div class="preview-area">
+            <div class="preview-header">LIVE PREVIEW (Chỉ để xem)</div>
+            <div id="preview-content"></div>
+        </div>
+        
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
